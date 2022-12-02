@@ -3,20 +3,17 @@ with open("input.txt", 'r') as f:
 
 current_calories = 0
 
-top_calories = []
+top_calories = [0] * 3
 
 for c in input_text:
     this_calorie = c[:-1]
     if not this_calorie:
-        if len(top_calories) < 3:
-            top_calories.append(current_calories)
-        else:
-            if current_calories > top_calories[0]:
-                top_calories.insert(0, current_calories)
-            elif current_calories > top_calories[1]:
-                top_calories.insert(1, current_calories)
-            elif current_calories > top_calories[2]:
-                top_calories.insert(2, current_calories)
+        if current_calories > top_calories[0]:
+            top_calories.insert(0, current_calories)
+        elif current_calories > top_calories[1]:
+            top_calories.insert(1, current_calories)
+        elif current_calories > top_calories[2]:
+            top_calories.insert(2, current_calories)
 
         if len(top_calories) > 3:
             top_calories = top_calories[:3]
